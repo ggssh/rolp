@@ -108,4 +108,14 @@ class TicksToTimeHelper : public AllStatic {
   static jlong milliseconds(const Tickspan& span);
 };
 
+class CPUTicks {
+public:
+    CPUTicks() : _ticks(0) {}
+    uint64_t stamp();
+    uint64_t value();
+private:
+    uint64_t _ticks;
+    inline uint64_t rdtscp();
+};
+
 #endif // SHARE_VM_UTILITIES_TICKS_HPP
